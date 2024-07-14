@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click To Wave</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            padding-top: 50px;
+        }
+        h1 {
+            font-size: 36px;
+        }
+        #counter {
+            font-size: 48px;
+            margin-top: 20px;
+        }
+        #image {
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        #achievements {
+            margin-top: 20px;
+        }
+        #footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Wave On Top</h1>
+    <div id="counter">0</div>
+    <img id="image" src="wave.jpg" width="200" height="200" onclick="incrementCounter()">
+    <div id="achievements"></div>
+    <div id="footer">
+        <a href="https://getwave.gg" target="_blank">getwave.gg</a>
+    </div>
+
+    <script>
+        var count = 0;
+        var achievements = [
+            { clicks: 100, text: "just 100? lol" },
+            { clicks: 1000, text: "hey stop using autoclicker bro" },
+            { clicks: 10000, text: "🥱" },
+            { clicks: 100000, text: "okay thats and good boy" }
+        ];
+
+        function incrementCounter() {
+            count++;
+            document.getElementById('counter').innerText = count;
+            checkAchievements();
+        }
+
+        function checkAchievements() {
+            for (var i = 0; i < achievements.length; i++) {
+                if (count === achievements[i].clicks) {
+                    displayAchievement(achievements[i].text);
+                }
+            }
+        }
+
+        function displayAchievement(text) {
+            var achievementsDiv = document.getElementById('achievements');
+            var p = document.createElement('p');
+            p.textContent = text;
+            achievementsDiv.appendChild(p);
+        }
+    </script>
+</body>
+</html>
